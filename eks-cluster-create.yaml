@@ -19,10 +19,17 @@ nodeGroups:
       publicKeyName: ec2_dev_key
     iam:
       withAddonPolicies:
+        imageBuilder: true
         autoScaler: true
+        externalDNS: true
+        certManager: true
+        appMesh: true
         ebs: true
         fsx: true
         efs: true
+        albIngress: true
+        xRay: true
+        cloudWatch: true
   - name: kube-cluster-ng-2
     labels:
       nodegroup-type: frontend-workloads
