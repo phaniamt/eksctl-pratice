@@ -11,8 +11,9 @@ nodeGroups:
       nodegroup-type: backend-workloads
     instanceType: t3.small
     minSize: 1
-    maxSize: 2
-    availabilityZones: ["us-east-1a", "us-east-1b"]
+    maxSize: 3
+    desiredCapacity: 2
+  #  availabilityZones: ["us-east-1a", "us-east-1b"]
     ami: auto
     volumeSize: 50
     ssh: # use existing EC2 key
@@ -35,15 +36,23 @@ nodeGroups:
       nodegroup-type: frontend-workloads
     instanceType: t3.small
     minSize: 1
-    maxSize: 2
-    availabilityZones: ["us-east-1a", "us-east-1b"]
+    maxSize: 3
+    desiredCapacity: 2
+ #   availabilityZones: ["us-east-1a", "us-east-1b"]
     ami: auto
     volumeSize: 50
     ssh: # use existing EC2 key
       publicKeyName: ec2_dev_key
     iam:
       withAddonPolicies:
+        imageBuilder: true
         autoScaler: true
+        externalDNS: true
+        certManager: true
+        appMesh: true
         ebs: true
         fsx: true
         efs: true
+        albIngress: true
+        xRay: true
+        cloudWatch: true
