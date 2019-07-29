@@ -13,8 +13,8 @@ nodeGroups:
     availabilityZones: ["us-east-1a", "us-east-1b"]
     ami: auto
     volumeSize: 50
-    allowSSH: true
-    SSHPublicKeyName: "my-key-pair-name.pem"
+    ssh: # use existing EC2 key
+      publicKeyName: ec2_dev_key
   - name: kube-cluster-ng-2
     instanceType: t3.small
     minSize: 1
@@ -22,5 +22,5 @@ nodeGroups:
     availabilityZones: ["us-east-1a", "us-east-1b"]
     ami: auto
     volumeSize: 50
-    allowSSH: true
-    SSHPublicKeyName: "my-key-pair-name.pem"
+    ssh: # use existing EC2 key
+      publicKeyName: ec2_dev_key
