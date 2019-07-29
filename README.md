@@ -61,4 +61,7 @@ eksctl drain nodegroup --cluster=<clusterName> --name=<nodegroupName>
       
       eksctl utils update-coredns
       
-      
+  # Enable Auto Scaling
+  
+  eksctl create cluster --asg-access
+  
