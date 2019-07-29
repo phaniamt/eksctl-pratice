@@ -7,6 +7,8 @@ metadata:
   tags: {environment: staging}
 nodeGroups:
   - name: kube-cluster-ng-1
+    labels:
+      nodegroup-type: backend-workloads
     instanceType: t3.small
     minSize: 1
     maxSize: 2
@@ -18,6 +20,9 @@ nodeGroups:
     iam:
       withAddonPolicies:
         autoScaler: true
+        ebs: true
+        fsx: true
+        efs: true
   - name: kube-cluster-ng-2
     labels:
       nodegroup-type: frontend-workloads
