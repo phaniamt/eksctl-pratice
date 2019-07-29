@@ -15,6 +15,10 @@ eksctl create cluster -f eks-cluster-create.yaml
 
 eksctl utils describe-stacks --region=us-east-1 --name=basic-cluster
 
+# Get the .kube/config file
+
+aws eks --region us-east-1 update-kubeconfig --name basic-cluster
+
 
 # To list the details about  all of the nodegroups, use:
 
