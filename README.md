@@ -42,27 +42,27 @@ kubectl label nodes -l alpha.eksctl.io/nodegroup-name=ng-1 new-label=foo
 
 # To delete a nodegroup, run:
 
-eksctl delete nodegroup --cluster=<clusterName> --name=<nodegroupName>
+eksctl delete nodegroup --cluster=phani-cluster --name=kube-cluster-ng-1 --region=us-east-1
   
 NOTE: this will drain all pods from that nodegroup before the instances are deleted
 
  # but if you need to drain a nodegroup without deleting it, run:
  
-eksctl drain nodegroup --cluster=<clusterName> --name=<nodegroupName>
+eksctl drain nodegroup --cluster=phani-cluster --name=kube-cluster-ng-1 --region=us-east-1
   
-  eksctl drain nodegroup --cluster=<clusterName> --name=<nodegroupName> --undo
+  eksctl drain nodegroup --cluster=phani-cluster --name=kube-cluster-ng-1 --region=us-east-1 --undo
   
  # To update control plane to the next available version run:
  
- eksctl update cluster --name=<clusterName>
+ eksctl update cluster --name=phani-cluster
   
   # To create a new nodegroup:
   
-  eksctl create nodegroup --cluster=<clusterName> --name=<newNodeGroupName>
+  eksctl create nodegroup --cluster=phani-cluster --name=newNodeGroupName
   
   # To delete old nodegroup:
   
-  eksctl delete nodegroup --cluster=<clusterName> --name=<oldNodeGroupName>
+  eksctl delete nodegroup --cluster=phani-cluster --name=oldNodeGroupName
   
   # Updating default add-ons
   
