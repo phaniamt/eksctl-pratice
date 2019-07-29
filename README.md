@@ -22,11 +22,11 @@ aws eks --region us-east-1 update-kubeconfig --name basic-cluster
 
 # To list the details about  all of the nodegroups, use:
 
-eksctl get nodegroup --cluster=basic-cluster
+eksctl get nodegroup --cluster=basic-cluster --region=us-east-1
 
 # To list the details about a nodegroup , use:
 
-eksctl get nodegroup --cluster=basic-cluster --name=kube-cluster-ng-1
+eksctl get nodegroup --cluster=basic-cluster --name=kube-cluster-ng-1 --region=us-east-1
 
 # The nodegroups ng-1-workers and ng-2-builders can be created with this command
 
