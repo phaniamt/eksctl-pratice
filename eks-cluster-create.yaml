@@ -30,3 +30,6 @@ nodeGroups:
     iam:
       withAddonPolicies:
         autoScaler: true
+        ebs: true
+        fsx: true
+        efs: true
