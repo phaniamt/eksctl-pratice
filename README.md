@@ -109,3 +109,7 @@ eksctl drain nodegroup --cluster=phani-cluster --name=kube-cluster-ng-1 --region
   # Delete a mapping:
   
   eksctl delete iamidentitymapping --name  my-cluster-1 --role arn:aws:iam::123456:role/testing
+  
+  # Delete the cluster 
+  
+  eksctl delete cluster --name=phani-cluster --region=us-east-1
