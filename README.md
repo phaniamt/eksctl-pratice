@@ -10,3 +10,7 @@ eksctl get nodegroup --cluster=basic-cluster
 # To list the details about a nodegroup , use:
 
 eksctl get nodegroup --cluster=basic-cluster --name=kube-cluster-ng-1
+
+# The nodegroups ng-1-workers and ng-2-builders can be created with this command
+
+eksctl create nodegroup --config-file=eks-node-group-create.yaml
