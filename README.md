@@ -1,5 +1,12 @@
 # Ref 
 https://eksctl.io/introduction/getting-started/
+
+https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html
+
+https://github.com/weaveworks/eksctl
+
+https://github.com/kubernetes-sigs/aws-ebs-csi-driver
+
 # Create cluster using eksctl
 
 eksctl create cluster -f eks-cluster-create.yaml
