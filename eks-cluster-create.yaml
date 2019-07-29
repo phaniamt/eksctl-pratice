@@ -1,0 +1,16 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: basic-cluster
+  region: us-east-1
+nodeGroups:
+  - name: kube-cluster-ng-1
+    instanceType: t3.small
+    minSize: 1
+    maxSize: 2
+    availabilityZones: ["us-east-1a", "us-east-1b"]
+    ami: auto
+    volumeSize: 50
+    allowSSH: true
+    SSHPublicKeyName: "my-key-pair-name.pem"
