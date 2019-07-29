@@ -4,6 +4,7 @@ kind: ClusterConfig
 metadata:
   name: basic-cluster
   region: us-east-1
+  tags: {environment: staging}
 nodeGroups:
   - name: kube-cluster-ng-1
     instanceType: t3.small
