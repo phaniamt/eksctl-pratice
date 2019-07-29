@@ -19,6 +19,8 @@ nodeGroups:
       withAddonPolicies:
         autoScaler: true
   - name: kube-cluster-ng-2
+    labels:
+      nodegroup-type: frontend-workloads
     instanceType: t3.small
     minSize: 1
     maxSize: 2
