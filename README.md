@@ -65,3 +65,18 @@ eksctl drain nodegroup --cluster=<clusterName> --name=<nodegroupName>
   
   eksctl create cluster --asg-access
   
+  # Get all identity mappings:
+  
+  eksctl get iamidentitymapping --name my-cluster-1
+  
+  # Get all identity mappings matching a role:
+  
+  eksctl get iamidentitymapping --name my-cluster-1 --role arn:aws:iam::123456:role/testing-role
+  
+  # Create an identity mapping:
+  
+   eksctl create iamidentitymapping --name  my-cluster-1 --role arn:aws:iam::123456:role/testing --group system:masters --username admin
+  
+  # Delete a mapping:
+  
+  eksctl delete iamidentitymapping --name  my-cluster-1 --role arn:aws:iam::123456:role/testing
