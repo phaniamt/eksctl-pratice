@@ -14,3 +14,12 @@ nodeGroups:
     volumeSize: 50
     allowSSH: true
     SSHPublicKeyName: "my-key-pair-name.pem"
+  - name: kube-cluster-ng-2
+    instanceType: t3.small
+    minSize: 1
+    maxSize: 2
+    availabilityZones: ["us-east-1a", "us-east-1b"]
+    ami: auto
+    volumeSize: 50
+    allowSSH: true
+    SSHPublicKeyName: "my-key-pair-name.pem"
