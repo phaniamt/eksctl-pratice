@@ -11,6 +11,10 @@ https://github.com/kubernetes-sigs/aws-ebs-csi-driver
 
 eksctl create cluster -f eks-cluster-create.yaml
 
+# Check the cluster staus
+
+eksctl utils describe-stacks --region=us-east-1 --name=basic-cluster
+
 
 # To list the details about  all of the nodegroups, use:
 
