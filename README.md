@@ -7,6 +7,14 @@ https://github.com/weaveworks/eksctl
 
 https://github.com/kubernetes-sigs/aws-ebs-csi-driver
 
+# Configure aws credentails and region with envs
+
+export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
+
+export AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+
+export AWS_DEFAULT_REGION=us-east-1
+
 # Create cluster using eksctl
 
 eksctl create cluster -f eks-cluster-create.yaml
