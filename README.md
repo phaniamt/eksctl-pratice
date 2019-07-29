@@ -1,4 +1,6 @@
-# eksctl-pratice
+# Ref 
+https://eksctl.io/introduction/getting-started/
+# Create cluster using eksctl
 
 eksctl create cluster -f eks-cluster-create.yaml
 
