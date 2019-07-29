@@ -46,7 +46,11 @@ eksctl scale nodegroup --cluster=dev-cluster --nodes=3 --name=ng-2-builders
 
 # Update labels
 
-kubectl label nodes -l alpha.eksctl.io/nodegroup-name=ng-1 new-label=foo
+kubectl label nodes -l alpha.eksctl.io/nodegroup-name=kube-cluster-ng-1 servers=beta
+
+# Check the labels
+
+kubectl get nodes --show-labels
 
 # To delete a nodegroup, run:
 
