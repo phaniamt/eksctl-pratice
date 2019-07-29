@@ -15,6 +15,9 @@ nodeGroups:
     volumeSize: 50
     ssh: # use existing EC2 key
       publicKeyName: ec2_dev_key
+    iam:
+      withAddonPolicies:
+        autoScaler: true
   - name: kube-cluster-ng-2
     instanceType: t3.small
     minSize: 1
@@ -24,3 +27,6 @@ nodeGroups:
     volumeSize: 50
     ssh: # use existing EC2 key
       publicKeyName: ec2_dev_key
+    iam:
+      withAddonPolicies:
+        autoScaler: true
