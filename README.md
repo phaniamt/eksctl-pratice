@@ -7,7 +7,7 @@ https://github.com/weaveworks/eksctl
 
 https://github.com/kubernetes-sigs/aws-ebs-csi-driver
 
-# Get AMI id from termial
+# Get AMI id from terminal
 
     aws ssm get-parameter --name /aws/service/eks/optimized-ami/1.14/amazon-linux-2/recommended/image_id --region eu-central-1 --query Parameter.Value --output text
 
