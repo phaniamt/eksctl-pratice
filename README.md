@@ -7,6 +7,11 @@ https://github.com/weaveworks/eksctl
 
 https://github.com/kubernetes-sigs/aws-ebs-csi-driver
 
+# Get AMI id from termial
+
+    aws ssm get-parameter --name /aws/service/eks/optimized-ami/1.14/amazon-linux-2/recommended/image_id --region eu-central-1 --query Parameter.Value --output text
+
+
 # Configure aws credentails and region with envs
 
 export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
@@ -18,6 +23,90 @@ export AWS_DEFAULT_REGION=us-east-1
 # Create cluster using eksctl
 
 eksctl create cluster -f eks-cluster-create.yaml
+
+    apiVersion: eksctl.io/v1alpha5
+    kind: ClusterConfig
+
+    metadata:
+      name: phani-cluster
+      region: eu-central-1
+      tags: {environment: beta}
+    availabilityZones: ["eu-central-1a", "eu-central-1b", "eu-central-1c"]
+    vpc:
+      nat:
+        gateway: Disable # other options: HighlyAvailable , Single (default)
+    nodeGroups:
+      - name: phani-cluster-ng-1
+        labels:
+          nodegroup-type: backend-workloads
+          server: dev
+        instanceType: t2.small
+        minSize: 1
+        maxSize: 2
+        desiredCapacity: 1
+        availabilityZones: ["eu-central-1a"]
+        preBootstrapCommands:
+            # Replicate what --enable-docker-bridge does in /etc/eks/bootstrap.sh
+            # Enabling the docker bridge network. We have to disable live-restore as it
+            # prevents docker from recreating the default bridge network on restart
+           - "cp /etc/docker/daemon.json /etc/docker/daemon_backup.json"
+           - "echo -e '.bridge=\"docker0\" | .\"live-restore\"=false' >  /etc/docker/jq_script"
+           - "jq -f /etc/docker/jq_script /etc/docker/daemon_backup.json | tee /etc/docker/daemon.json"
+           - "systemctl restart docker"
+    #    ami: auto
+        ami: ami-0f64557dd6506a4aa
+        volumeSize: 10
+        ssh: # use existing EC2 key
+          publicKeyName: phani-new
+        iam:
+          withAddonPolicies:
+            imageBuilder: true
+            autoScaler: true
+            externalDNS: true
+            certManager: true
+            appMesh: true
+            ebs: true
+            fsx: true
+            efs: true
+            albIngress: true
+            xRay: true
+            cloudWatch: true
+      - name: phani-cluster-ng-2
+        labels:
+          nodegroup-type: frond-workloads
+          server: prod
+        instanceType: t2.micro
+        minSize: 1
+        maxSize: 2
+        desiredCapacity: 1
+        availabilityZones: ["eu-central-1b"]
+        preBootstrapCommands:
+            # Replicate what --enable-docker-bridge does in /etc/eks/bootstrap.sh
+            # Enabling the docker bridge network. We have to disable live-restore as it
+            # prevents docker from recreating the default bridge network on restart
+           - "cp /etc/docker/daemon.json /etc/docker/daemon_backup.json"
+           - "echo -e '.bridge=\"docker0\" | .\"live-restore\"=false' >  /etc/docker/jq_script"
+           - "jq -f /etc/docker/jq_script /etc/docker/daemon_backup.json | tee /etc/docker/daemon.json"
+           - "systemctl restart docker"
+     #    ami: auto
+        ami: ami-0f64557dd6506a4aa
+        volumeSize: 10
+        ssh: # use existing EC2 key
+          publicKeyName: phani-new
+        iam:
+          withAddonPolicies:
+            imageBuilder: true
+            autoScaler: true
+            externalDNS: true
+            certManager: true
+            appMesh: true
+            ebs: true
+            fsx: true
+            efs: true
+            albIngress: true
+            xRay: true
+            cloudWatch: true
+
 
 # Check the cluster staus
 
